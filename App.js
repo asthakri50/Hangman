@@ -1,12 +1,13 @@
 import React from "react" ;
 import ReactDOM from "react-dom" ;
 import Game from "./components/game";
+import './styles/main.scss' ;
 
 
 const App = () => (
     <>
-    <div>
-        Worddle Lite !
+    <div class="red">
+        Wordle Lite !
     </div>
     <Game>
     </Game>
