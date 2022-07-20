@@ -1,6 +1,7 @@
  module.exports = {
     mode: "development" ,
     entry: "./App.js",
+    watch: true ,
     output: {
         filename : "main.js"
     },

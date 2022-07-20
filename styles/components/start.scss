@@ -1,0 +1,47 @@
+.start-button{
+    font-family: 'Mochiy Pop P One', sans-serif;
+    background: $sky ;
+    padding: 1rem 2.5rem ;
+    display: inline-grid ;
+    place-items: center ;
+    font-size: 2rem ;
+    color: $sky-aqua ;
+    border-radius : 15px ;
+    border: 2px solid $sky-aqua ;
+    position: relative ;
+    transform-style: preserve-3d ;
+    transition: transform 150ms ease-in-out, background 150ms ease-in-out ;
+    cursor: pointer ; 
+
+    &::before{
+      content: "" ;
+      width: 100% ;
+      height: 100% ;
+      position: absolute ;
+      background: repeating-linear-gradient(to right , transparent , transparent 1px, $sky-dark 10px) , $sky;
+      border: 2px solid $sky ;
+      border-radius: 15px ;
+      transform: translate3d(0 , 1.5rem , -2rem) ;
+      box-shadow: 0px 15px 4px -2px rgba($sky-light, 1) ;
+       transition: transform 150ms ease-in-out, box-shadow 150ms ease-in-out ;
+    }
+    
+      &:active, &:hover{
+        transform: translate(0, 1rem) ;
+        background: darken($sky , 20%) ;
+        
+        &::before{
+          transform: translate3d(0 , 0.5rem , -2rem) ;
+           box-shadow: 0px 10px 4px -2px rgba($sky-light, 1) ;
+        }
+      }
+    
+    &--letter{
+      padding: 1rem 1.5rem;
+      margin-bottom: 1rem;
+      margin-left: 0.25rem ;
+      margin-right: 0.25rem;
+    }
+
+    
+  }

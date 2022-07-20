@@ -13,9 +13,6 @@ export default function Lives({ livesLeft }) {
                 <div className="hangman__element"></div>
             </div>
 
-            <div>
-                Lives: {livesLeft}
-            </div>
         </div>
     )
 }

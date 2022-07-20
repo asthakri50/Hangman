@@ -6,9 +6,6 @@ import './styles/main.scss' ;
 
 const App = () => (
     <>
-    <div class="red">
-        Wordle Lite !
-    </div>
     <Game>
     </Game>
     </>

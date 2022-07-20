@@ -4,19 +4,19 @@ export default function Word({
     actualWord , playedLetters
 }) {
     return (
-        <div>
+        <div className='display-flex justify-content-around word-flex'>
             {[...actualWord].map((letter) => (
-                <>
+                <div>
                 {playedLetters.has(letter) ? (
-                    <span>
+                    <div className='word'>
                         {letter}
-                    </span>
+                    </div>
                 ) : (
-                    <span>
+                    <div className='word'>
                         &nbsp;_&nbsp;
-                    </span>
+                    </div>
                 )}
-                </>
+                </div>
 
         ))}
         </div>
