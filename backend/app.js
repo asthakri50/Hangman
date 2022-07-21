@@ -1,38 +1,12 @@
-const Express = require('express');
-const Router = require('./routes');
-const { sequelize  , Word} = require('./models');
+const Express = require('express') ;
 
-async function initialize() {
-    const app = Express();
+const Router = require('./routes') ;
 
-    app.use(Express.json());
-    app.use("/api", Router);
+const app = Express();
 
-    await sequelize.sync();
-    // await Word.bulkCreate([
-    //     {
-    //         title: "bazzinga"
-    //     },
-    //     {
-    //         title: "amazing"
-    //     },
-    //     {
-    //         title: "scaler"
-    //     },
-    //     {
-    //         title: "nodejs"
-    //     },
-    //     {
-    //         title: "programme"
-    //     },
-    //     {
-    //         title: "hangman"
-    //     }
-    // ])
+app.use(Express.json() );
+app.use("/api" , Router) ;
 
-    app.listen(8000, () => {
-        console.log("Running application on port 8000");
-    })
-}
-
-initialize();
+app.listen(8000 , ()=>{
+    console.log("Running application on port 8000");
+})
