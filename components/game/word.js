@@ -1,20 +1,24 @@
-import React from 'react';
+import React from 'react' ; 
 
 export default function Word({
-    maskedWords
+    actualWord , playedLetters
 }) {
     return (
         <div className='display-flex justify-content-around word-flex'>
-            {maskedWords.map((letter) => (
-
+            {[...actualWord].map((letter) => (
+                <div>
+                {playedLetters.has(letter) ? (
                     <div className='word'>
-                        &nbsp;{letter} &nbsp;
+                        {letter}
                     </div>
+                ) : (
+                    <div className='word'>
+                        &nbsp;_&nbsp;
+                    </div>
+                )}
+                </div>
 
-
-    
-
-            ))}
+        ))}
         </div>
     )
 }

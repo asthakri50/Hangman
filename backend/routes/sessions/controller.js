@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize') ;
 
-const { Word , GameSession} = require('../../models') ;
+const { Word , gameSession, GameSession} = require('../../models') ;
 const serializeGameSession = require('../../serializers/gameSession') ;
 const gameSessionService = require('../../services/game_session_service') ; 
 
@@ -12,14 +12,14 @@ async function CreateSession(req , res) {
     }
     ) ;
     //select * from words order by random() limit 1 ;
-   
     const gameSession = await GameSession.create({
+        playedname : name,
         playedLetters: "",
         wordId: word.id,
         startedAt: new Date()
     })
     //TODO : use this name
-    
+
     res.json(await serializeGameSession(gameSession)) ;
 }
 
