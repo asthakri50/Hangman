@@ -1,46 +1,32 @@
 import React, { useState } from 'react';
 import Layout from './layout';
+import { createSession, playInSession } from "../../api/sessions";
 
-
-const MAX_LIVES = 6;
 
 export default function Game() {
-
-    const [actualWord, setActualWord] = useState("");
-    const [playedLetters, setPlayedLetters] = useState([]);
-
-    const word_set = new Set([...actualWord]);
-    const played_set = new Set([...playedLetters]);
-    const wrongLetters = playedLetters.filter((letter) => {
-        return !word_set.has(letter);
-    })
-    const lives = MAX_LIVES - wrongLetters.length;
-    const isRunning = actualWord;
-    const isWon = isRunning && lives && [...word_set].reduce((acc, curr) => {
-        if (!played_set.has(curr)) return false;
-
-        return acc;
-    }, true);
-
-    const guess = letter => {
-        setPlayedLetters((prev) => [...prev, letter])
+   
+    const [session, setSession] = useState(null);
+    const guess = async (letter) => {
+        const updatedSession = await playInSession(session.id, letter);
+        setSession(updatedSession);
     }
 
-    const start = () => {
-        setActualWord("house");
-        setPlayedLetters([]);
+    const isRunning = !!session;
+
+    const start = async (name) => {
+        const session = await createSession(name);
+        setSession(session);
+       
     }
 
     return (
         <>
             <Layout
-                lives={lives}
-                actualWord={actualWord}
-                played_set={played_set}
-                guess={guess}
                 start={start}
-                isWon={isWon}
                 isRunning={isRunning}
+                guess={guess}
+                lives={session.livesLeft}
+                maskedWords={session.maskedWord}
             />
         </>
     )
